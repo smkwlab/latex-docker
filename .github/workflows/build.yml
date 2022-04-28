@@ -75,14 +75,14 @@ jobs:
             echo "${TAG} exists. Skipped"
             exit 0
           fi
-          docker manifest create ${{ env.IMAGE }}:${IMAGE_VERSION} \
-              ${{ env.IMAGE }}:${IMAGE_VERSION}-amd64 \
-              ${{ env.IMAGE }}:${IMAGE_VERSION}-arm64
-          docker manifest push ${{ env.IMAGE }}:${IMAGE_VERSION}
-          docker manifest create ${{ env.IMAGE }}:latest \
-              ${{ env.IMAGE }}:${IMAGE_VERSION}-amd64 \
-              ${{ env.IMAGE }}:${IMAGE_VERSION}-arm64
-          docker manifest push ${{ env.IMAGE }}:latest
+          docker manifest create ghcr.io/${{ env.IMAGE }}:${IMAGE_VERSION} \
+              ghcr.io/${{ env.IMAGE }}:${IMAGE_VERSION}-amd64 \
+              ghcr.io/${{ env.IMAGE }}:${IMAGE_VERSION}-arm64
+          docker manifest push ghcr.io/${{ env.IMAGE }}:${IMAGE_VERSION}
+          docker manifest create ghcr.io/${{ env.IMAGE }}:latest \
+              ghcr.io/${{ env.IMAGE }}:${IMAGE_VERSION}-amd64 \
+              ghcr.io/${{ env.IMAGE }}:${IMAGE_VERSION}-arm64
+          docker manifest push ghcr.io/${{ env.IMAGE }}:latest
           git tag ${TAG}
           git push --tags
           gh release create ${TAG} -n "${TAG}"
