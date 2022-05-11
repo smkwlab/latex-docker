@@ -18,6 +18,7 @@ RUN apt-get update && \
         perl \
         poppler-utils \
         ttf-mscorefonts-installer && \
+    cpan YAML/Tiny.pm Log::Dispatch::File File::HomeDir Unicode::GCString && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
@@ -57,7 +58,8 @@ RUN tlmgr update --self && \
         collection-xetex \
         latexmk \
         latexdiff \
-        siunitx && \
+        siunitx \
+        latexindent && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
