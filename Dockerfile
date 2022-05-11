@@ -18,7 +18,6 @@ RUN apt-get update && \
         perl \
         poppler-utils \
         ttf-mscorefonts-installer && \
-    cpan YAML/Tiny.pm Log::Dispatch::File File::HomeDir Unicode::GCString && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
@@ -28,6 +27,7 @@ RUN apt-get update && \
         build-essential \
         python3-pip \
         python3-dev && \
+    echo 'y' | cpan YAML/Tiny.pm Log::Dispatch::File File::HomeDir Unicode::GCString && \
     pip3 install --no-cache-dir pygments && \
     mkdir /tmp/install-tl-unx && \
     wget -O - ftp://tug.org/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
