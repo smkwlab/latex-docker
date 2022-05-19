@@ -16,6 +16,7 @@ RUN apt-get update && \
         libfreetype6-dev \
         ghostscript \
         perl \
+        git \
         poppler-utils \
         ttf-mscorefonts-installer && \
     apt-get clean && \
@@ -44,7 +45,8 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN tlmgr update --self && \
+RUN tlmgr option repository ctan && \
+    tlmgr update --self && \
     tlmgr install \
         collection-bibtexextra \
         collection-fontsrecommended \
