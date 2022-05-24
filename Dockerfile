@@ -71,4 +71,3 @@ WORKDIR /workdir
 
 COPY .latexmkrc /
 COPY .latexmkrc /root/
-
