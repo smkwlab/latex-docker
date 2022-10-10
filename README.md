@@ -12,14 +12,10 @@ docker run -u $(id -u):$(id -g) --rm -v $PWD:/workdir ghcr.io/being24/latex-dock
 
 ## Version
 
-| Image tag | Ubuntu | TeXLive | Arch        |
-| --------- | ------ | ------- | ----------- |
-| 1.0.0     | 19.10  | 2019    | amd64       |
-| 1.1.0     | 19.10  | 2019    | amd64       |
-| 1.2.0     | 19.10  | 2019    | amd64       |
-| 2.0.0     | 20.04  | 2020    | amd64       |
-| 3.0.0     | 20.04  | 2021    | amd64, arm64 |
-| 3.0.3     | 20.04  | 2021    | amd64, arm64 |
+| Image tag | Ubuntu | TeXLive | Arch         | Registry            |
+| --------- | ------ | ------- | -----------  | ------------------  |
+| 3.0.3     | 20.04  | 2022    | amd64, arm64 | ghcr.io             |
+| 3.1.0     | 20.04  | 2022    | amd64, arm64 | docker.io, ghcr.io  |
 
 ## Author
 
@@ -57,3 +53,20 @@ gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dEmbedAllFonts=true -sOutputFile=output.
 
 注意点として、matplotlib等でグラフをpdf形式で出力している場合は、そちらにも作成時にフォントを埋め込んでおく必要があります。
 また、一部学会でグラフにtimes new romanを使用することを求めていますが、このフォントは上の方法を用いて埋め込むとフォントの規約違反となることに注意してください。Adobe Acrobat Pro DCを使用してフォントをロックする必要があります。
+
+## PDF Version
+
+論文等提出時に、PDFのバージョンが指定されている場合があります。
+そういった場合、.latexmkrcの
+
+```bash
+$dvipdf = 'dvipdfmx %O -o %D %S';
+```
+
+を
+
+```bash
+$dvipdf = 'dvipdfmx -V 4 %O -o %D %S';
+```
+
+に変更することでバージョンを指定することができます。
