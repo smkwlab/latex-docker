@@ -40,7 +40,7 @@ RUN apt-get update && \
     rm -r /tmp/install-tl-unx && \
     ln -sf /usr/local/texlive/${TEXLIVE_VERSION}/bin/$(uname -m)-linux /usr/local/texlive/bin && \
     apt-get remove -y --purge \
-        build-essential \
+        build-essential && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
