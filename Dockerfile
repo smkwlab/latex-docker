@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ARG TEXLIVE_VERSION=2022
+ARG TEXLIVE_VERSION=2021
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NOWARNINGS=yes
@@ -62,7 +62,8 @@ RUN tlmgr option repository ctan && \
         latexmk \
         latexdiff \
         siunitx \
-        latexindent && \
+        latexindent \
+        scalobox && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
