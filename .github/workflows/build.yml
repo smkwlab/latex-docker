@@ -48,8 +48,8 @@ jobs:
           platforms: linux/${{ matrix.arch }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ghcr.io/pddg/latex:latest-${{ matrix.arch }}
-            ghcr.io/pddg/latex:${{ env.VERSION }}-${{ matrix.arch }}
+            ghcr.io/being24/latex:latest-${{ matrix.arch }}
+            ghcr.io/being24/latex:${{ env.VERSION }}-${{ matrix.arch }}
             ${{ secrets.DOCKERHUB_USERNAME }}/latex:latest-${{ matrix.arch }}
             ${{ secrets.DOCKERHUB_USERNAME }}/latex:${{ env.VERSION }}-${{ matrix.arch }}
   manifest:
@@ -68,7 +68,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          image: ghcr.io/pddg/latex
+          image: ghcr.io/being24/latex
           image-version: ${{ env.IMAGE_VERSION }}
       - uses: ./.github/actions/create-multi-arch-image
         with:
@@ -81,7 +81,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG=v$(cat VERSION)
+          TAG=v$(cat VERSION
           if git show-ref --tags | grep -q "refs/tags/${TAG}"
           then
             echo "${TAG} exists. Skipped"
@@ -90,4 +90,3 @@ jobs:
           git tag ${TAG}
           git push --tags
           gh release create ${TAG} -n "${TAG}"
-
