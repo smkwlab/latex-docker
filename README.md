@@ -14,8 +14,8 @@ docker run -u $(id -u):$(id -g) --rm -v $PWD:/workdir ghcr.io/being24/latex-dock
 
 | Image tag | Ubuntu | TeXLive | Arch         | Registry            |
 | --------- | ------ | ------- | -----------  | ------------------  |
-| 3.0.3     | 20.04  | 2022    | amd64, arm64 | ghcr.io             |
-| 3.1.0     | 20.04  | 2022    | amd64, arm64 | docker.io, ghcr.io  |
+| 3.0.3     | 20.04  | 2021    | amd64, arm64 | ghcr.io             |
+| 3.1.0     | 20.04  | 2021    | amd64, arm64 | docker.io, ghcr.io  |
 
 ## Author
 
