@@ -47,7 +47,6 @@ RUN apt-get update && \
 
 RUN tlmgr option repository ctan && \
     tlmgr update --self && \
-    fmtutil-sys --all && \
     tlmgr install \
         collection-bibtexextra \
         collection-fontsrecommended \
@@ -62,8 +61,7 @@ RUN tlmgr option repository ctan && \
         latexmk \
         latexdiff \
         siunitx \
-        latexindent \
-        scalobox && \
+        latexindent && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
