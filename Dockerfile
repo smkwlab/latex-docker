@@ -47,6 +47,7 @@ RUN apt-get update && \
 
 RUN tlmgr option repository ctan && \
     tlmgr update --self && \
+    fmtutil-sys --all && \
     tlmgr install \
         collection-bibtexextra \
         collection-fontsrecommended \
