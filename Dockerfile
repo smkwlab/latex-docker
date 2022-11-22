@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ARG TEXLIVE_VERSION=2022
 
@@ -66,6 +66,15 @@ RUN tlmgr option repository ctan && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
     mktexlsr
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        npm \
+        openjdk-17-jre-headless && \
+    npm install -g textlint && \
+    apt-get clean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workdir
 
