@@ -69,14 +69,16 @@ RUN tlmgr option repository ctan && \
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        npm \
-        openjdk-17-jre-headless && \
-    npm install -g textlint && \
+        npm && \
+    npm install -g textlint \
+        textlint-rule-preset-ja-technical-writing \
+        textlint-rule-preset-ja-spacing \
+        textlint-rule-no-mix-dearu-desumasu \
+        textlint-filter-rule-comments \
+        textlint-filter-rule-allowlist \
+        textlint-plugin-latex2e && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workdir
-
-COPY .latexmkrc /
-COPY .latexmkrc /root/
