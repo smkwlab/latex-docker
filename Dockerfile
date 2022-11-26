@@ -76,6 +76,7 @@ RUN apt-get update && \
         textlint-rule-no-mix-dearu-desumasu \
         textlint-filter-rule-comments \
         textlint-filter-rule-allowlist \
+        textlint-plugin-html \
         textlint-plugin-latex2e && \
     apt-get clean && \
     apt-get autoremove -y && \
