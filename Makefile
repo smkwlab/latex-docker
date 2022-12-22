@@ -1,7 +1,7 @@
 .PHONY: all build
 
 DOCKER=docker
-IMAGE=ghcr.io/smkwlab/latex-docker
+IMAGE=ghcr.io/smkwlab/textlint-docker
 
 all: build
 
