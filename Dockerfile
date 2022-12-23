@@ -5,6 +5,8 @@ ENV DEBCONF_NOWARNINGS=yes
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+        ssh \
+        git \
         npm && \
     npm install -g textlint \
         textlint-rule-preset-ja-technical-writing \
