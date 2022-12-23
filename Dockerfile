@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ghcr.io/smkwlab/textlint-docker:latest
 
 ARG TEXLIVE_VERSION=2022
 
@@ -66,20 +66,5 @@ RUN tlmgr option repository ctan && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
     mktexlsr
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        npm && \
-    npm install -g textlint \
-        textlint-rule-preset-ja-technical-writing \
-        textlint-rule-preset-ja-spacing \
-        textlint-rule-no-mix-dearu-desumasu \
-        textlint-filter-rule-comments \
-        textlint-filter-rule-allowlist \
-        textlint-plugin-html \
-        textlint-plugin-latex2e && \
-    apt-get clean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workdir
