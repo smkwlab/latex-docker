@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - textlint-image
   pull_request:
     branches:
       - master
