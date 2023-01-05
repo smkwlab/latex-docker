@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NOWARNINGS=yes
 
-RUN apt-get update && \
+RUN apt-get -q update && \
     apt-get install -y --no-install-recommends \
         ssh \
         git \
